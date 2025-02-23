@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-// import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/components/theme/theme-provider'
 import { getPayload } from 'payload'
 import { Payload } from 'payload'
 import config from '@payload-config'
@@ -66,14 +66,14 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-        </ThemeProvider> */}
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                    >
+                            {children}
+                </ThemeProvider>
             </body>
         </html>
     )
