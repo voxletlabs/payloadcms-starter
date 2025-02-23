@@ -7,55 +7,50 @@ import type { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   const payload: Payload = await getPayload({ config })
+export async function generateMetadata(): Promise<Metadata> {
+    const payload: Payload = await getPayload({ config })
 
-//   const metaData = await payload.findGlobal({
-//     slug: 'metadata',
-//   })
+    const metaData = await payload.findGlobal({
+        slug: 'metadata',
+    })
 
-//   return {
-//     title: metaData.title,
-//     description: metaData.description,
-//     icons: {
-//       icon: (metaData.favicon as any)?.url || '/favicon.ico',
-//     },
-//     keywords: metaData.keywords.map((kw) => kw.keyword),
-//     robots: {
-//       index: metaData.robots?.index ?? true,
-//       follow: metaData.robots?.follow ?? true,
-//     },
-//     themeColor: metaData.themeColor,
-//     authors: [
-//       {
-//         name: metaData.authors.name,
-//         url: metaData.authors.url || '',
-//       },
-//     ],
-//     openGraph: {
-//       type: 'website',
-//       url: metaData.openGraph.websiteUrl,
-//       title: metaData.openGraph.title,
-//       description: metaData.openGraph.description,
-//       siteName: metaData.openGraph.siteName,
-//       images: [
-//         {
-//           url: (metaData.openGraph?.openGraphImage as any)?.url || '',
-//           width: (metaData.openGraph?.openGraphImage as any)?.width || 1200,
-//           height: (metaData.openGraph?.openGraphImage as any)?.height || 630,
-//           alt: (metaData.openGraph?.openGraphImage as any)?.alt || '',
-//         },
-//       ],
-//     },
-//     alternates: {
-//       canonical: metaData.alternates?.canonical || '',
-//     },
-//   }
-// }
-
-export const metadata = {
-    description: 'A blank template using Payload in a Next.js app.',
-    title: 'Payload Blank Template',
+    return {
+        title: metaData.title || "Title",
+        description: metaData.description || "Description",
+        icons: {
+            icon: (metaData.favicon as any)?.url || '/favicon.ico',
+        },
+        keywords: metaData.keywords.map((kw) => kw.keyword) || "",
+        robots: {
+            index: metaData.robots?.index ?? true,
+            follow: metaData.robots?.follow ?? true,
+        },
+        themeColor: metaData.themeColor,
+        authors: [
+            {
+                name: metaData.authors.name,
+                url: metaData.authors.url || '',
+            },
+        ],
+        openGraph: {
+            type: 'website',
+            url: metaData.openGraph.websiteUrl,
+            title: metaData.openGraph.title,
+            description: metaData.openGraph.description,
+            siteName: metaData.openGraph.siteName,
+            images: [
+                {
+                    url: (metaData.openGraph?.openGraphImage as any)?.url || '',
+                    width: (metaData.openGraph?.openGraphImage as any)?.width || 1200,
+                    height: (metaData.openGraph?.openGraphImage as any)?.height || 630,
+                    alt: (metaData.openGraph?.openGraphImage as any)?.alt || '',
+                },
+            ],
+        },
+        alternates: {
+            canonical: metaData.alternates?.canonical || '',
+        },
+    }
 }
 
 export default function RootLayout({
@@ -71,8 +66,8 @@ export default function RootLayout({
                     defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange
-                    >
-                            {children}
+                >
+                    {children}
                 </ThemeProvider>
             </body>
         </html>

@@ -83,8 +83,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    metadata: Metadatum;
+  };
+  globalsSelect: {
+    metadata: MetadataSelect<false> | MetadataSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -275,6 +279,86 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "metadata".
+ */
+export interface Metadatum {
+  id: number;
+  title: string;
+  description: string;
+  favicon: number | Media;
+  keywords: {
+    keyword: string;
+    id?: string | null;
+  }[];
+  robots?: {
+    index?: boolean | null;
+    follow?: boolean | null;
+  };
+  themeColor: string;
+  authors: {
+    name: string;
+    url?: string | null;
+  };
+  openGraph: {
+    websiteUrl: string;
+    title: string;
+    description: string;
+    siteName: string;
+    openGraphImage: number | Media;
+  };
+  alternates?: {
+    canonical?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "metadata_select".
+ */
+export interface MetadataSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  favicon?: T;
+  keywords?:
+    | T
+    | {
+        keyword?: T;
+        id?: T;
+      };
+  robots?:
+    | T
+    | {
+        index?: T;
+        follow?: T;
+      };
+  themeColor?: T;
+  authors?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+      };
+  openGraph?:
+    | T
+    | {
+        websiteUrl?: T;
+        title?: T;
+        description?: T;
+        siteName?: T;
+        openGraphImage?: T;
+      };
+  alternates?:
+    | T
+    | {
+        canonical?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
