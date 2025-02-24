@@ -85,9 +85,11 @@ export interface Config {
   };
   globals: {
     metadata: Metadatum;
+    header: Header;
   };
   globalsSelect: {
     metadata: MetadataSelect<false> | MetadataSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
   };
   locale: null;
   user: User & {
@@ -317,6 +319,37 @@ export interface Metadatum {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  logo?: {
+    logoType?: ('text' | 'image' | 'both') | null;
+    logoText?: string | null;
+    logoImage?: {
+      image?: (number | null) | Media;
+      height?: string | null;
+      width?: string | null;
+    };
+  };
+  navLinks?:
+    | {
+        label?: string | null;
+        href?: string | null;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaButton?: {
+    label?: string | null;
+    href?: string | null;
+    openInNewTab?: boolean | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "metadata_select".
  */
 export interface MetadataSelect<T extends boolean = true> {
@@ -355,6 +388,43 @@ export interface MetadataSelect<T extends boolean = true> {
     | T
     | {
         canonical?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  logo?:
+    | T
+    | {
+        logoType?: T;
+        logoText?: T;
+        logoImage?:
+          | T
+          | {
+              image?: T;
+              height?: T;
+              width?: T;
+            };
+      };
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        openInNewTab?: T;
+        id?: T;
+      };
+  ctaButton?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        openInNewTab?: T;
       };
   updatedAt?: T;
   createdAt?: T;

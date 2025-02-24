@@ -14,19 +14,19 @@ export const ThemeToggler = React.forwardRef<
   const { theme, setTheme } = useTheme()
 
   return (
-      <Button
-        ref={ref}
-        variant="ghost"
-        type="button"
-        size="icon"
-        className={cn('px-2 hidden lg:flex', className)}
-        aria-label="Toggle theme"
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        {...props}
-      >
-        <SunIcon className="size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
-        <MoonIcon className="hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
-      </Button>
+    <Button
+      ref={ref}
+      variant="ghost"
+      type="button"
+      size="icon"
+      className={cn('px-2', className)}
+      aria-label="Toggle theme"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      {...props}
+    >
+      <SunIcon className="size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
+      <MoonIcon className="hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
+    </Button>
   )
 })
 
