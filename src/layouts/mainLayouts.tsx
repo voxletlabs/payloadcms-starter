@@ -16,14 +16,17 @@ export default async function MainLayout({
         slug: 'header',
     })
 
-    console.log(header)
-    console.log(header?.logo?.logoImage?.image)
+    const footer = await payload.findGlobal({
+        slug: 'footer',
+    })
+
+    console.log(footer)
 
     return (
         <main className="overflow-x-hidden">
             <Header header={header} />
             {children}
-            <Footer />
+            <Footer footer={footer} />
         </main>
     )
 }

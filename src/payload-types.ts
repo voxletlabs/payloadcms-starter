@@ -86,10 +86,12 @@ export interface Config {
   globals: {
     metadata: Metadatum;
     header: Header;
+    footer: Footer;
   };
   globalsSelect: {
     metadata: MetadataSelect<false> | MetadataSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
   };
   locale: null;
   user: User & {
@@ -350,6 +352,41 @@ export interface Header {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  logo?: {
+    logoType?: ('text' | 'image' | 'both') | null;
+    logoText?: string | null;
+    logoImage?: {
+      image?: (number | null) | Media;
+      height?: string | null;
+      width?: string | null;
+    };
+  };
+  copywriteText?: string | null;
+  footerLinks?:
+    | {
+        linksGroup?: {
+          groupName?: string | null;
+          links?:
+            | {
+                label?: string | null;
+                href?: string | null;
+                openInNewTab?: boolean | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "metadata_select".
  */
 export interface MetadataSelect<T extends boolean = true> {
@@ -425,6 +462,47 @@ export interface HeaderSelect<T extends boolean = true> {
         label?: T;
         href?: T;
         openInNewTab?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  logo?:
+    | T
+    | {
+        logoType?: T;
+        logoText?: T;
+        logoImage?:
+          | T
+          | {
+              image?: T;
+              height?: T;
+              width?: T;
+            };
+      };
+  copywriteText?: T;
+  footerLinks?:
+    | T
+    | {
+        linksGroup?:
+          | T
+          | {
+              groupName?: T;
+              links?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    openInNewTab?: T;
+                    id?: T;
+                  };
+            };
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

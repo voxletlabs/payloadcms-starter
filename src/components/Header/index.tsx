@@ -8,7 +8,6 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
-
 interface HeaderProps {
     header: any
 }
