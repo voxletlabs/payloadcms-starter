@@ -17,6 +17,7 @@ export default async function MainLayout({
     })
 
     console.log(header)
+    console.log(header?.logo?.logoImage?.image)
 
     return (
         <main className="overflow-x-hidden">

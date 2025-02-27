@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { ThemeToggler } from "@/components/theme/themeToggler";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Loader, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 href="/"
                             >
                                 <Image
-                                    src={header.logo.logoImage.image}
+                                    src={header.logo.logoImage.image.url}
                                     alt="logo"
                                     height={header.logo.logoImage.height}
                                     width={header.logo.logoImage.width}
@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 href="/"
                             >
                                 <Image
-                                    src={header.logo.logoImage.image}
+                                    src={header.logo.logoImage.image.url}
                                     alt="logo"
                                     height={header.logo.logoImage.height}
                                     width={header.logo.logoImage.width}
@@ -81,16 +81,17 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 <span className="text-lg font-bold">{header.logo.logoText}</span>
                             </Link>
                         )}
-                        <div className="flex items-center gap-1.5">
-                            <Link
-                                className=""
-                                href={"#"}
-                            >
-                                <Button variant={'ghost'} className="">
-                                    This Link
-                                </Button>
-                            </Link>
-                        </div>
+                        {header.navLinks.length > 0 && (
+                            <div className="flex items-center gap-1.5">
+                                {header.navLinks.map((link: { id: string; label: string; href: string; openInNewTab: boolean }) => (
+                                    <Link key={link.id} href={link.href} target={link.openInNewTab ? "_blank" : "_self"}>
+                                        <Button variant="ghost">
+                                            {link.label}
+                                        </Button>
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </div>
                     <div className="flex space-x-2 items-center">
                         <ThemeToggler className="rounded-full" />
@@ -109,7 +110,6 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                     </div>
                 </div>
             </div>
-            {/* mobile nav */}
             <div className="flex h-full w-full items-center lg:hidden ">
                 <div className={`flex justify-between bg-transparent items-center w-full rounded-lg px-2.5 py-1.5 transition duration-200 
         ${scrolled ? "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 shadow-md dark:shadow-[0px_0px_9.39138px_rgba(0,0,0,0.1)]" : ""}`}>
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                             href="/"
                         >
                             <Image
-                                src={header.logo.logoImage.image}
+                                src={header.logo.logoImage.image.url}
                                 alt="logo"
                                 height={header.logo.logoImage.height}
                                 width={header.logo.logoImage.width}
@@ -140,7 +140,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                             href="/"
                         >
                             <Image
-                                src={header.logo.logoImage.image}
+                                src={header.logo.logoImage.image.url}
                                 alt="logo"
                                 height={header.logo.logoImage.height}
                                 width={header.logo.logoImage.width}
@@ -175,7 +175,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 href="/"
                             >
                                 <Image
-                                    src={header.logo.logoImage.image}
+                                    src={header.logo.logoImage.image.url}
                                     alt="logo"
                                     height={header.logo.logoImage.height}
                                     width={header.logo.logoImage.width}
@@ -189,7 +189,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 href="/"
                             >
                                 <Image
-                                    src={header.logo.logoImage.image}
+                                    src={header.logo.logoImage.image.url}
                                     alt="logo"
                                     height={header.logo.logoImage.height}
                                     width={header.logo.logoImage.width}
