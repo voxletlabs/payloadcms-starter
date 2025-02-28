@@ -1,3 +1,4 @@
+import { slugify } from '@/utils/slugify'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -6,12 +7,12 @@ interface PostCardProps {
     title: string
     imageUrl: string
     date: string
-    description: string
+    description?: string
 }
 
 const PostCard: React.FC<PostCardProps> = ({ title, imageUrl, date, description }) => {
     return (
-        <Link href={'#'}>
+        <Link href={`/blog/${slugify(title)}`}>
             <div className="relative flex flex-col h-[27rem] rounded-3xl bg-background p-2 transition duration-300 hover:shadow-xl border">
                 <div className="aspect-video w-full rounded-2xl overflow-hidden bg-accent">
                     <Image
@@ -23,7 +24,7 @@ const PostCard: React.FC<PostCardProps> = ({ title, imageUrl, date, description 
                     />
                 </div>
                 <div className="flex flex-1 flex-col p-8">
-                    <div className="text-sm/5 text-muted-foreground">{date}</div>
+                    <div className="text-sm/5 text-muted-foreground">{date.slice(0, 10)}</div>
                     <div className="mt-2 text-base/7 font-medium">
                         <p className="line-clamp-2">{title}</p>
                     </div>

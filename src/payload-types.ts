@@ -175,7 +175,7 @@ export interface Post {
   author: (number | User)[];
   category: (number | Category)[];
   publishedAt: string;
-  coverImage?: (number | null) | Media;
+  coverImage: number | Media;
   content: {
     root: {
       type: string;

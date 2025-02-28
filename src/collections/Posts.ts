@@ -44,6 +44,7 @@ export const Posts: CollectionConfig = {
             name: 'coverImage',
             type: 'upload',
             relationTo: 'media',
+            required: true,
         },
         {
             name: 'content',
