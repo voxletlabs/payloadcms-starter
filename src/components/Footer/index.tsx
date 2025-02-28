@@ -1,38 +1,10 @@
 import React from 'react';
 import Image from "next/image";
 import Link from "next/link";
-
-export interface FooterData {
-    id: number;
-    globalType: string;
-    logo: {
-        logoType: "text" | "image" | "both";
-        logoText?: string;
-        logoImage?: {
-            image: { url: string };
-            height: number;
-            width: number;
-        };
-    };
-    copywriteText: string;
-    footerLinks: {
-        linksGroups: {
-            id: string;
-            groupName: string;
-            links: {
-                id: string;
-                label: string;
-                href: string;
-                openInNewTab: boolean;
-            }[];
-        }[];
-    };
-    updatedAt: string;
-    createdAt: string;
-}
+import { FooterTypes } from '@/types/Footer';
 
 interface FooterProps {
-    footer: FooterData;
+    footer: FooterTypes;
 }
 
 const Footer: React.FC<FooterProps> = ({ footer }) => {

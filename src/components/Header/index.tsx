@@ -7,9 +7,10 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { HeaderTypes } from "@/types/Header";
 
 interface HeaderProps {
-    header: any
+    header: HeaderTypes
 }
 
 const Header: React.FC<HeaderProps> = ({ header }) => {
@@ -53,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 <span className="text-lg font-bold">{header.logo.logoText}</span>
                             </Link>
                         )}
-                        {header.logo.logoType === "image" && (
+                        {header.logo.logoType === "image" && header.logo.logoImage?.image?.url && (
                             <Link
                                 className="px-2 py-1 relative z-20"
                                 href="/"
@@ -66,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 />
                             </Link>
                         )}
-                        {header.logo.logoType === "both" && (
+                        {header.logo.logoType === "both" && header.logo.logoImage?.image?.url && (
                             <Link
                                 className="px-2 py-1 relative z-20 flex items-center jusitfy-start gap-2"
                                 href="/"
@@ -120,7 +121,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                             <span className="text-lg font-bold">{header.logo.logoText}</span>
                         </Link>
                     )}
-                    {header.logo.logoType === "image" && (
+                    {header.logo.logoType === "image" && header.logo.logoImage?.image?.url && (
                         <Link
                             className="px-2 py-1 relative z-20"
                             href="/"
@@ -133,7 +134,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                             />
                         </Link>
                     )}
-                    {header.logo.logoType === "both" && (
+                    {header.logo.logoType === "both" && header.logo.logoImage?.image?.url && (
                         <Link
                             className="px-2 py-1 relative z-20 flex items-center jusitfy-start gap-2"
                             href="/"
@@ -167,7 +168,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 <span className="text-lg font-bold">{header.logo.logoText}</span>
                             </Link>
                         )}
-                        {header.logo.logoType === "image" && (
+                        {header.logo.logoType === "image" && header.logo.logoImage?.image?.url && (
                             <Link
                                 onClick={ToggleNav}
                                 className="px-2 py-1 relative z-20"
@@ -181,7 +182,7 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                                 />
                             </Link>
                         )}
-                        {header.logo.logoType === "both" && (
+                        {header.logo.logoType === "both" && header.logo.logoImage?.image?.url && (
                             <Link
                                 onClick={ToggleNav}
                                 className="px-2 py-1 relative z-20 flex items-center jusitfy-start gap-2"
