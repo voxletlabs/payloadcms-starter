@@ -61,11 +61,11 @@ export const Footer: GlobalConfig = {
         },
         {
             name: 'footerLinks',
-            type: 'array',
+            type: 'group',
             fields: [
                 {
-                    name: 'linksGroup',
-                    type: 'group',
+                    name: 'linksGroups',
+                    type: 'array',
                     fields: [
                         {
                             name: 'groupName',

@@ -366,9 +366,9 @@ export interface Footer {
     };
   };
   copywriteText?: string | null;
-  footerLinks?:
-    | {
-        linksGroup?: {
+  footerLinks?: {
+    linksGroups?:
+      | {
           groupName?: string | null;
           links?:
             | {
@@ -378,10 +378,10 @@ export interface Footer {
                 id?: string | null;
               }[]
             | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -489,7 +489,7 @@ export interface FooterSelect<T extends boolean = true> {
   footerLinks?:
     | T
     | {
-        linksGroup?:
+        linksGroups?:
           | T
           | {
               groupName?: T;
@@ -501,8 +501,8 @@ export interface FooterSelect<T extends boolean = true> {
                     openInNewTab?: T;
                     id?: T;
                   };
+              id?: T;
             };
-        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
