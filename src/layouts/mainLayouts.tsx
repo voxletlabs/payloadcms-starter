@@ -1,5 +1,5 @@
 import '@/app/globals.css'
-import Footer from '@/components/Footer'
+import Footer, { FooterData } from '@/components/Footer'
 import Header from '@/components/Header'
 import { getPayload } from 'payload'
 import { Payload } from 'payload'
@@ -18,9 +18,11 @@ export default async function MainLayout({
 
     const footer = await payload.findGlobal({
         slug: 'footer',
-    })
+    }) as FooterData;
+
 
     console.log(footer)
+    console.log(footer?.footerLinks?.linksGroups)
 
     return (
         <main className="overflow-x-hidden">
