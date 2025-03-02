@@ -102,7 +102,7 @@ const PropertyPage = () => {
 
     return (
         <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-[5rem] space-y-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-[6rem] space-y-6">
                 <div className="w-full max-md:aspect-video md:h-[30rem] rounded-xl overflow-hidden">
                     <Image
                         key={property.images[0].id}
@@ -182,24 +182,34 @@ const PropertyPage = () => {
                             <p className="text-muted-foreground">{property.description}</p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {property.images.map((image: any) => (
-                                    <div
+                                    <Link
+                                        href={image.image.url}
                                         key={image.id}
-                                        className="w-full aspect-video rounded-lg overflow-hidden"
+                                        target="_blank"
+                                        className="w-full group aspect-video rounded-lg overflow-hidden relative block"
                                     >
-                                        <Image
-                                            src={image.image.url}
-                                            alt={image.image.alt}
-                                            width={image.image.width}
-                                            height={image.image.height}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+                                        <div className="w-full h-full relative">
+                                            <Image
+                                                src={image.image.url}
+                                                alt={image.image.alt}
+                                                width={image.image.width}
+                                                height={image.image.height}
+                                                className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-60"
+                                            />
+                                            {/* Button with smooth transition */}
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
+                                                <Button variant="secondary" className="rounded-full">
+                                                    Open in New Tab
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
                     </div>
 
-                    <Card className="p-6 sticky top-4 bg-background">
+                    <Card className="p-6 sticky top-[5rem] h-max bg-background">
                         <div className="space-y-6">
                             <Badge className="rounded-full">{property.propertyType}</Badge>
                             <div className="space-y-6">
