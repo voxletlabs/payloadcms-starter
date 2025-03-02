@@ -69,6 +69,7 @@ export interface Config {
     users: User;
     media: Media;
     services: Service;
+    properties: Property;
     testimonials: Testimonial;
     customers: Customer;
     faqs: Faq;
@@ -81,6 +82,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
+    properties: PropertiesSelect<false> | PropertiesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     customers: CustomersSelect<false> | CustomersSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
@@ -180,6 +182,29 @@ export interface Service {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties".
+ */
+export interface Property {
+  id: number;
+  title: string;
+  description: string;
+  propertyType: 'Apartment' | 'House' | 'Commercial';
+  location: string;
+  availability: 'Sale' | 'Rent';
+  priceOrRent: string;
+  features: {
+    feature?: string | null;
+    id?: string | null;
+  }[];
+  images: {
+    image?: (number | null) | Media;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials".
  */
 export interface Testimonial {
@@ -230,6 +255,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'services';
         value: number | Service;
+      } | null)
+    | ({
+        relationTo: 'properties';
+        value: number | Property;
       } | null)
     | ({
         relationTo: 'testimonials';
@@ -328,6 +357,32 @@ export interface MediaSelect<T extends boolean = true> {
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   supportline?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties_select".
+ */
+export interface PropertiesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  propertyType?: T;
+  location?: T;
+  availability?: T;
+  priceOrRent?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

@@ -15,6 +15,7 @@ import { Faqs } from './collections/Faq'
 import { Services } from './collections/Services'
 import { Testimonials } from './collections/Testimonials'
 import { Customers } from './collections/Customers'
+import { Properties } from './collections/Properties'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,6 +36,7 @@ export default buildConfig({
     Users,
     Media,
     Services,
+    Properties,
     Testimonials,
     Customers,
     Faqs,
