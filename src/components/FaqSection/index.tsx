@@ -16,6 +16,10 @@ const FaqSection = async () => {
         collection: 'faqs',
     })
 
+    if (!FaqData.docs.length) {
+        return null;
+    }
+
     return (
         <>
             <div id="faqs" className="pt-[7rem] pb-40 px-4 sm:px-6 max-w-7xl mx-auto">

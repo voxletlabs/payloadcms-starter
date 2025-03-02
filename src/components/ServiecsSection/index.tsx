@@ -12,6 +12,10 @@ const Services = async () => {
         collection: 'services',
     })
 
+    if (!ServicesData.docs.length) {
+        return null;
+    }
+
     return (
         <main
             className="my-[6rem] sm:my-[8rem] lg:my-[10rem] px-4 sm:px-6 max-w-7xl mx-auto"

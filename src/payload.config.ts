@@ -13,6 +13,8 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { Faqs } from './collections/Faq'
 import { Services } from './collections/Services'
+import { Testimonials } from './collections/Testimonials'
+import { Customers } from './collections/Customers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,6 +35,8 @@ export default buildConfig({
     Users,
     Media,
     Services,
+    Testimonials,
+    Customers,
     Faqs,
   ],
   editor: lexicalEditor(),
