@@ -11,7 +11,6 @@ import { Media } from './collections/Media'
 import { MetaData } from './globals/MetaData'
 import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
-import { Posts } from './collections/Posts'
 import { Categories } from './collections/Categories'
 
 const filename = fileURLToPath(import.meta.url)
@@ -32,19 +31,7 @@ export default buildConfig({
   collections: [
     Users,
     Media,
-    Posts,
     Categories,
-    {
-      slug: 'testimonials',
-      fields: [
-        {
-          name: 'content',
-          type: 'richText',
-          editor: lexicalEditor({}),
-          required: true,
-        },
-      ],
-    },
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
