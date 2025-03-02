@@ -4,6 +4,7 @@ import { s3Storage } from '@payloadcms/storage-s3'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder';
 import sharp from 'sharp'
 
 import { Users } from './collections/Users'
@@ -55,6 +56,9 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    formBuilderPlugin({
+      // Optional: Customize plugin options here
+    }),
     s3Storage({
       collections: {
         media: {
