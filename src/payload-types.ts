@@ -68,7 +68,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    categories: Category;
+    faqs: Faq;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,7 +77,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    faqs: FaqsSelect<false> | FaqsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -163,11 +163,12 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
+ * via the `definition` "faqs".
  */
-export interface Category {
+export interface Faq {
   id: number;
-  name: string;
+  question: string;
+  answer: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -187,8 +188,8 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'categories';
-        value: number | Category;
+        relationTo: 'faqs';
+        value: number | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -270,10 +271,11 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
+ * via the `definition` "faqs_select".
  */
-export interface CategoriesSelect<T extends boolean = true> {
-  name?: T;
+export interface FaqsSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
   updatedAt?: T;
   createdAt?: T;
 }
