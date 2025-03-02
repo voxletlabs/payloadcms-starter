@@ -5,6 +5,7 @@ import PropertyCard from '@/components/PropertyCard'
 // import Search from '@/components/Search'
 import { Info } from 'lucide-react'
 import type { Metadata } from 'next'
+import SearchProperties from '@/components/SearchProperties'
 
 export const metadata: Metadata = {
     title: 'Properties - Payload Real Estate',
@@ -38,7 +39,7 @@ const PropertiesPage = async () => {
     return (
         <div>
             <div className="pt-[6rem] pb-40 px-4 sm:px-6 max-w-7xl mx-auto">
-                {/* <Search /> */}
+                <SearchProperties />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {properties.map((property) => {
                         const imageUrl = (property.images?.[0]?.image as any)?.url
