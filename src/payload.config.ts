@@ -12,6 +12,7 @@ import { MetaData } from './globals/MetaData'
 import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { Faqs } from './collections/Faq'
+import { Services } from './collections/Services'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,7 +32,8 @@ export default buildConfig({
   collections: [
     Users,
     Media,
-    Faqs
+    Services,
+    Faqs,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
