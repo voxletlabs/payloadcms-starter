@@ -8,6 +8,7 @@ import {
 import SectionHead from '@/components/SectionHead'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { faqsSection } from '@/data/sectionsData'
 
 const FaqSection = async () => {
     const payload = await getPayload({ config })
@@ -24,8 +25,8 @@ const FaqSection = async () => {
         <>
             <div id="faqs" className="pt-[7rem] pb-40 px-4 sm:px-6 max-w-7xl mx-auto">
                 <SectionHead
-                    title="Frequently Asked Questions"
-                    supportLine="Find answers to the most common questions"
+                    title={faqsSection.title}
+                    supportLine={faqsSection.supportline}
                     className="py-8"
                 />
                 <div className="max-w-4xl mx-auto">

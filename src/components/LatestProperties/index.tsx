@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ChevronRight, Divide } from 'lucide-react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { latestPropertiesSection } from '@/data/sectionsData'
 
 const LatestProperties = async () => {
     const payload = await getPayload({ config })
@@ -23,8 +24,8 @@ const LatestProperties = async () => {
     return (
         <div className="pt-[7rem] pb-40 px-4 sm:px-6 max-w-7xl mx-auto">
             <SectionHead
-                title="Discover Your Dream Property"
-                supportLine="Explore our curated selection of prime real estate, featuring the perfect blend of comfort, style, and location tailored just for you."
+                title={latestPropertiesSection.title}
+                supportLine={latestPropertiesSection.supportline}
                 className="pt-8 pb-12"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

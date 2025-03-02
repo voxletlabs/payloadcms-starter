@@ -4,6 +4,7 @@ import React from 'react'
 import SectionHead from '../SectionHead'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { servicesSection } from '@/data/sectionsData'
 
 const Services = async () => {
     const payload = await getPayload({ config })
@@ -22,8 +23,8 @@ const Services = async () => {
             id="services"
         >
             <SectionHead
-                title="Comprehensive Real Estate Solutions for Your Every Need"
-                supportLine="Explore our range of services designed to simplify your property journey, from buying and selling to property management and beyond."
+                title={servicesSection.title}
+                supportLine={servicesSection.supportline}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto gap-2">
                 {ServicesData.docs.reverse().map((service) => (

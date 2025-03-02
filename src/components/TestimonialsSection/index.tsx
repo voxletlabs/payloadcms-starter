@@ -4,6 +4,7 @@ import { InfiniteMovingCards } from '@/components/ui/InfiniteCards'
 import SectionHead from '../SectionHead'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { testimonialsSection } from '@/data/sectionsData'
 
 interface Customer {
     id: number
@@ -43,8 +44,8 @@ const Testimonials = async () => {
     return (
         <section id="testimonials" className="py-20 px-4 sm:px-6 max-w-7xl mx-auto">
             <SectionHead
-                title="What Our Students Say About Their Experience with Us"
-                supportLine="Discover how our learners have unlocked new opportunities and achieved their goals with the power of digital skills."
+                title={testimonialsSection.title}
+                supportLine={testimonialsSection.supportline}
                 className="py-8"
             />
             <div className="flex flex-col items-center max-lg:mt-10">
