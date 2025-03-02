@@ -95,11 +95,13 @@ export interface Config {
   };
   globals: {
     metadata: Metadatum;
+    sections: Section;
     header: Header;
     footer: Footer;
   };
   globalsSelect: {
     metadata: MetadataSelect<false> | MetadataSelect<true>;
+    sections: SectionsSelect<false> | SectionsSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
   };
@@ -486,6 +488,44 @@ export interface Metadatum {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections".
+ */
+export interface Section {
+  id: number;
+  heroSection: {
+    title: string;
+    calltoaction: {
+      title: string;
+      description: string;
+      ctaButton: {
+        label: string;
+        href: string;
+        openInNewTab?: boolean | null;
+      };
+    };
+    heroImage: number | Media;
+  };
+  latestPropertiesSection: {
+    title: string;
+    supportline: string;
+  };
+  servicesSection: {
+    title: string;
+    supportline: string;
+  };
+  testimonialsSection: {
+    title: string;
+    supportline: string;
+  };
+  faqsSection: {
+    title: string;
+    supportline: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
@@ -590,6 +630,58 @@ export interface MetadataSelect<T extends boolean = true> {
     | T
     | {
         canonical?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections_select".
+ */
+export interface SectionsSelect<T extends boolean = true> {
+  heroSection?:
+    | T
+    | {
+        title?: T;
+        calltoaction?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              ctaButton?:
+                | T
+                | {
+                    label?: T;
+                    href?: T;
+                    openInNewTab?: T;
+                  };
+            };
+        heroImage?: T;
+      };
+  latestPropertiesSection?:
+    | T
+    | {
+        title?: T;
+        supportline?: T;
+      };
+  servicesSection?:
+    | T
+    | {
+        title?: T;
+        supportline?: T;
+      };
+  testimonialsSection?:
+    | T
+    | {
+        title?: T;
+        supportline?: T;
+      };
+  faqsSection?:
+    | T
+    | {
+        title?: T;
+        supportline?: T;
       };
   updatedAt?: T;
   createdAt?: T;

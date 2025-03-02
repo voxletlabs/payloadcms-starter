@@ -16,6 +16,7 @@ import { Services } from './collections/Services'
 import { Testimonials } from './collections/Testimonials'
 import { Customers } from './collections/Customers'
 import { Properties } from './collections/Properties'
+import { Sections } from './globals/Sections'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,6 +30,7 @@ export default buildConfig({
   },
   globals: [
     MetaData,
+    Sections,
     Header,
     Footer
   ],
