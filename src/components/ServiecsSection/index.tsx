@@ -19,7 +19,7 @@ const Services = async () => {
 
     return (
         <main
-            className="my-[6rem] sm:my-[8rem] lg:my-[10rem] px-4 sm:px-6 max-w-7xl mx-auto"
+            className="py-[6rem] sm:py-[8rem] lg:py-[10rem] px-4 sm:px-6 max-w-7xl mx-auto"
             id="services"
         >
             <SectionHead
