@@ -18,5 +18,5 @@ export const Faqs: CollectionConfig = {
             required: true,
         },
     ],
-    hooks: createRevalidateHook(['/', '/contact'], 'faqs-section'),
+    hooks: createRevalidateHook(['/'], 'faqs-section'),
 }
