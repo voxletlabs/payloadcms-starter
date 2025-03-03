@@ -42,9 +42,8 @@ const ContactPage: React.FC = async () => {
                                 <p className="text-sm">Email</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-1">
                                     {contact.emails.map((email: any) => (
-                                        <a href={`mailto:${email.email}`} className="w-max">
+                                        <a key={email.id} href={`mailto:${email.email}`} className="w-max">
                                             <p
-                                                key={email.id}
                                                 className="text-sm hover:text-primary transition duration-200 text-muted-foreground"
                                             >
                                                 {email.email}
@@ -62,9 +61,13 @@ const ContactPage: React.FC = async () => {
                                         <a
                                             key={phoneNumber.id}
                                             href={`tel:${phoneNumber.phoneNumber}`}
-                                            className="text-sm text-muted-foreground my-1 block"
+                                            className="w-max"
                                         >
-                                            {phoneNumber.phoneNumber}
+                                            <p
+                                                className="text-sm hover:text-primary transition duration-200 text-muted-foreground"
+                                            >
+                                                {phoneNumber.phoneNumber}
+                                            </p>
                                         </a>
                                     ))}
                                 </div>
