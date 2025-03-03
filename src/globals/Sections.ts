@@ -136,5 +136,5 @@ export const Sections: GlobalConfig = {
             ]
         },
     ],
-    hooks: createRevalidateHook(['/'], 'sections data update'),
+    hooks: createRevalidateHook(['/'], 'sections'),
 }
