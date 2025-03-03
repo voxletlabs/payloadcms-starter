@@ -127,7 +127,7 @@ const MyFormComponent = ({ formId }: { formId: string }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} ref={formRef} className='p-10 border rounded-xl flex flex-col gap-[2rem]'>
+    <form onSubmit={handleSubmit} ref={formRef} className='p-5 md:p-10 border rounded-xl flex flex-col gap-[2rem]'>
       {cmsForm.fields.map((field: any) => (
         <div
           key={field.id}
