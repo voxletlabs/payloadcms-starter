@@ -102,12 +102,14 @@ export interface Config {
     sections: Section;
     header: Header;
     footer: Footer;
+    contact: Contact;
   };
   globalsSelect: {
     metadata: MetadataSelect<false> | MetadataSelect<true>;
     sections: SectionsSelect<false> | SectionsSelect<true>;
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
   };
   locale: null;
   user: User & {
@@ -942,6 +944,36 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: number;
+  title?: string | null;
+  description?: string | null;
+  emails?:
+    | {
+        email?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  phoneNumbers?:
+    | {
+        phoneNumber?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  social?:
+    | {
+        label?: string | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "metadata_select".
  */
 export interface MetadataSelect<T extends boolean = true> {
@@ -1110,6 +1142,36 @@ export interface FooterSelect<T extends boolean = true> {
                   };
               id?: T;
             };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  emails?:
+    | T
+    | {
+        email?: T;
+        id?: T;
+      };
+  phoneNumbers?:
+    | T
+    | {
+        phoneNumber?: T;
+        id?: T;
+      };
+  social?:
+    | T
+    | {
+        label?: T;
+        link?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

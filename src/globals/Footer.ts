@@ -96,5 +96,5 @@ export const Footer: GlobalConfig = {
             ],
         },
     ],
-    hooks: createRevalidateHook(['/'], 'footer'),
+    hooks: createRevalidateHook(['/', '/properties', '/properties/:slug', '/contact'], 'footer'),
 }

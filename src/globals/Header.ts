@@ -97,5 +97,5 @@ export const Header: GlobalConfig = {
         },
 
     ],
-    hooks: createRevalidateHook(['/'], 'header'),
+    hooks: createRevalidateHook(['/', '/properties', '/properties/:slug', '/contact'], 'header'),
 }

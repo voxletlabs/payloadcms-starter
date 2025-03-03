@@ -112,5 +112,5 @@ export const MetaData: GlobalConfig = {
       ],
     },
   ],
-  hooks: createRevalidateHook(['/'], 'meta-data'),
+  hooks: createRevalidateHook(['/', '/properties', '/properties/:slug', '/contact'], 'meta-data'),
 }
