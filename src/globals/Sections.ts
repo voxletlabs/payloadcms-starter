@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload'
-import { createRevalidateHook } from '../hooks/revalidate'
+import { createRevalidateHook } from '@/hooks/revalidate'
 
 export const Sections: GlobalConfig = {
     slug: 'sections',
@@ -136,5 +136,5 @@ export const Sections: GlobalConfig = {
             ]
         },
     ],
-    hooks: createRevalidateHook(['/'], 'sections'),
+    hooks: createRevalidateHook(['/'], 'sections data update'),
 }
