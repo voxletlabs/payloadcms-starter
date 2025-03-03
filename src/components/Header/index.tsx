@@ -201,13 +201,28 @@ const Header: React.FC<HeaderProps> = ({ header }) => {
                             <X className="size-5" />
                         </div>
                     </div>
-                    <div
-                        className="flex flex-col items-start justify-start gap-2 px-4 w-full"
-                    >
-                        <Link href={"#"} className="w-full" onClick={ToggleNav}>
-                            <Button variant={"ghost"} className="w-full justify-start text-lg">This Link</Button>
-                        </Link>
-                    </div>
+                    {header.navLinks.length > 0 && (
+                        <div
+                            className="flex flex-col items-start justify-start gap-2 px-4 w-full"
+                        >
+                            {header.navLinks.map((link: { id: string; label: string; href: string; openInNewTab: boolean }) => (
+                                <Link
+                                    key={link.id}
+                                    href={link.href}
+                                    target={link.openInNewTab ? "_blank" : "_self"}
+                                    onClick={ToggleNav}
+                                >
+                                    <Button
+                                        variant="ghost"
+                                        className="w-full justify-start text-lg"
+                                    >
+                                        {link.label}
+                                    </Button>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+
                     <div
                         className="flex flex-row w-full items-start gap-2.5 px-8 py-4 border-t"
                     >
