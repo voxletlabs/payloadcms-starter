@@ -44,6 +44,12 @@ export const Contact: GlobalConfig = {
                     name: 'link',
                     type: 'text',
                 },
+                {
+                    name: 'openInNewTab',
+                    type: 'checkbox',
+                    label: 'Open link in a new tab',
+                    defaultValue: false,
+                },
             ]
         },
     ],

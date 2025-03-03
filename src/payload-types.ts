@@ -966,6 +966,7 @@ export interface Contact {
     | {
         label?: string | null;
         link?: string | null;
+        openInNewTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -1171,6 +1172,7 @@ export interface ContactSelect<T extends boolean = true> {
     | {
         label?: T;
         link?: T;
+        openInNewTab?: T;
         id?: T;
       };
   updatedAt?: T;
